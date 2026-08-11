@@ -86,8 +86,11 @@ html, body, [class*="css"] {{ font-family:'Inter',sans-serif; }}
 }}
 section[data-testid="stSidebar"] {{
   background: {DEEP_OCEAN};
+  border-right:1px solid rgba(255,255,255,.08);
 }}
-section[data-testid="stSidebar"] * {{ color: #EAF3F1 !important; }}
+section[data-testid="stSidebar"] * {{ color: #F4FBF9 !important; }}
+section[data-testid="stSidebar"] .stRadio label p{{ color:#FFFFFF !important; }}
+section[data-testid="stSidebar"] .stCaptionContainer{{ color:#BFD8D3 !important; }}
 
 #MainMenu, footer, header {{ visibility: hidden; }}
 
@@ -157,62 +160,230 @@ div[data-testid="stMetricValue"]{{ color:{EVERGREEN}; font-weight:700; }}
   background:{RED_SOFT}; border:1.5px solid #f3c8c8; border-radius:10px; padding:12px 14px; margin-top:10px; color:#7c1f1f; font-size:14px;
 }}
 
-/* ── Seamless glass panels for bordered containers (forms, comment boxes) ── */
+/* ── Dark enterprise surfaces: keep the entire app legible on the TraceLink gradient ── */
 div[data-testid="stVerticalBlockBorderWrapper"]{{
-  background: rgba(255,255,255,0.07);
-  border: 1px solid rgba(255,255,255,0.16) !important;
+  background: rgba(0, 44, 56, 0.72) !important;
+  border: 1px solid rgba(255,255,255,0.14) !important;
   border-radius: 16px !important;
-  backdrop-filter: blur(6px);
-  box-shadow: 0 8px 24px rgba(0,0,0,0.15);
-}}
-div[data-testid="stVerticalBlockBorderWrapper"] [data-testid="stMarkdownContainer"] p,
-div[data-testid="stVerticalBlockBorderWrapper"] [data-testid="stMarkdownContainer"] li,
-div[data-testid="stVerticalBlockBorderWrapper"] [data-testid="stMarkdownContainer"] strong,
-div[data-testid="stVerticalBlockBorderWrapper"] [data-testid="stMarkdownContainer"] h1,
-div[data-testid="stVerticalBlockBorderWrapper"] [data-testid="stMarkdownContainer"] h2,
-div[data-testid="stVerticalBlockBorderWrapper"] [data-testid="stMarkdownContainer"] h3,
-div[data-testid="stVerticalBlockBorderWrapper"] [data-testid="stMarkdownContainer"] h4,
-div[data-testid="stVerticalBlockBorderWrapper"] [data-testid="stMarkdownContainer"] h5,
-div[data-testid="stVerticalBlockBorderWrapper"] [data-testid="stWidgetLabel"] p,
-div[data-testid="stVerticalBlockBorderWrapper"] .stRadio label p,
-div[data-testid="stVerticalBlockBorderWrapper"] .stCheckbox label p,
-div[data-testid="stVerticalBlockBorderWrapper"] .stCaptionContainer{{
-  color:#F4F4F4 !important;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.16);
 }}
 
-/* ── Force legible white text inside every input / textarea / dropdown ── */
-.stTextArea textarea, .stTextInput input, .stNumberInput input, .stDateInput input{{
-  background: rgba(255,255,255,0.09) !important;
+div[data-testid="stVerticalBlockBorderWrapper"] [data-testid="stMarkdownContainer"] *,
+div[data-testid="stVerticalBlockBorderWrapper"] [data-testid="stWidgetLabel"] *,
+div[data-testid="stVerticalBlockBorderWrapper"] .stRadio label *,
+div[data-testid="stVerticalBlockBorderWrapper"] .stCheckbox label *,
+div[data-testid="stVerticalBlockBorderWrapper"] .stCaptionContainer *{{
   color:#FFFFFF !important;
-  border:1px solid rgba(255,255,255,0.28) !important;
+}}
+
+.stApp [data-testid="stMarkdownContainer"] p,
+.stApp [data-testid="stMarkdownContainer"] li,
+.stApp [data-testid="stMarkdownContainer"] strong,
+.stApp [data-testid="stMarkdownContainer"] em,
+.stApp [data-testid="stWidgetLabel"] p,
+.stApp .stRadio label p,
+.stApp .stCheckbox label p,
+.stApp .stCaptionContainer,
+.stApp .stCaptionContainer p{{
+  color:#F7FBFA !important;
+}}
+
+.stApp h1, .stApp h2, .stApp h3, .stApp h4, .stApp h5, .stApp h6{{
+  color:#FFFFFF !important;
+}}
+
+.stApp .stCaptionContainer{{
+  color:#CFE3DF !important;
+}}
+
+/* ── Inputs: dark glass, white text, quiet borders ── */
+.stTextArea textarea,
+.stTextInput input,
+.stNumberInput input,
+.stDateInput input{{
+  background: rgba(0, 27, 38, 0.48) !important;
+  color:#FFFFFF !important;
+  -webkit-text-fill-color:#FFFFFF !important;
+  border:1px solid rgba(255,255,255,0.22) !important;
   border-radius:10px !important;
   caret-color:#FFFFFF;
+  box-shadow:none !important;
 }}
-.stTextArea textarea::placeholder, .stTextInput input::placeholder{{
-  color: rgba(255,255,255,0.55) !important;
+.stTextArea textarea:focus,
+.stTextInput input:focus,
+.stNumberInput input:focus,
+.stDateInput input:focus{{
+  border-color:{CYAN} !important;
+  box-shadow:0 0 0 1px {CYAN} !important;
+}}
+.stTextArea textarea::placeholder,
+.stTextInput input::placeholder{{
+  color:rgba(255,255,255,0.52) !important;
+  -webkit-text-fill-color:rgba(255,255,255,0.52) !important;
 }}
 div[data-baseweb="select"] > div{{
-  background: rgba(255,255,255,0.09) !important;
-  border:1px solid rgba(255,255,255,0.28) !important;
+  background:rgba(0,27,38,0.48) !important;
+  border:1px solid rgba(255,255,255,0.22) !important;
   border-radius:10px !important;
+  box-shadow:none !important;
 }}
 div[data-baseweb="select"] *{{ color:#FFFFFF !important; }}
-div[data-baseweb="popover"] li{{ color:{GRAY_900} !important; }}
+div[data-baseweb="popover"]{{
+  background:#003D4C !important;
+}}
+div[data-baseweb="popover"] li,
+div[data-baseweb="popover"] [role="option"]{{
+  color:#FFFFFF !important;
+  background:#003D4C !important;
+}}
+div[data-baseweb="popover"] [aria-selected="true"]{{
+  background:#005587 !important;
+}}
 
-/* ── Plain headings/labels sitting directly on the gradient ── */
-.tl-plain-heading{{ color:#F4F4F4; font-weight:700; margin-bottom:2px; }}
+/* Date input icon + number input controls */
+.stDateInput svg, .stNumberInput svg{{ color:#FFFFFF !important; fill:#FFFFFF !important; }}
+.stNumberInput button{{
+  background:rgba(255,255,255,0.06) !important;
+  color:#FFFFFF !important;
+  border-color:rgba(255,255,255,0.14) !important;
+}}
 
-div[data-testid="stMetric"] label{{ color:{GRAY_700} !important; }}
+/* ── Seamless buttons ── */
+.stButton > button,
+.stDownloadButton > button{{
+  border-radius:10px !important;
+  font-weight:700 !important;
+  min-height:40px;
+  transition:background .15s ease, box-shadow .15s ease, transform .15s ease;
+}}
+.stButton > button[kind="primary"]{{
+  background:{CYAN} !important;
+  color:#FFFFFF !important;
+  border:1px solid {CYAN} !important;
+  box-shadow:0 4px 12px rgba(0,167,181,.18);
+}}
+.stButton > button[kind="primary"]:hover{{
+  background:#0095A2 !important;
+  border-color:#0095A2 !important;
+  box-shadow:0 7px 18px rgba(0,167,181,.28);
+  transform:translateY(-1px);
+}}
+.stButton > button[kind="secondary"]{{
+  background:rgba(255,255,255,0.075) !important;
+  color:#FFFFFF !important;
+  border:1px solid rgba(255,255,255,0.16) !important;
+  box-shadow:none !important;
+}}
+.stButton > button[kind="secondary"]:hover{{
+  background:rgba(255,255,255,0.13) !important;
+  border-color:rgba(255,255,255,0.28) !important;
+  color:#FFFFFF !important;
+  box-shadow:none !important;
+  transform:none;
+}}
+.stDownloadButton > button{{
+  background:{COBALT} !important;
+  color:#FFFFFF !important;
+  border:1px solid {COBALT} !important;
+  box-shadow:none !important;
+}}
+.stDownloadButton > button:hover{{
+  background:#006A9B !important;
+  border-color:#006A9B !important;
+}}
 
+/* Small task add/remove controls stay visually quiet */
+div[data-testid="stHorizontalBlock"] .stButton > button{{
+  padding-left:12px !important;
+  padding-right:12px !important;
+}}
+div[data-testid="stHorizontalBlock"] .stButton > button:not([kind="primary"]){{
+  min-width:42px;
+}}
+
+/* ── Tabs ── */
+.stTabs [data-baseweb="tab-list"]{{
+  gap:6px;
+  background:rgba(0,39,50,.35);
+  padding:4px;
+  border-radius:12px;
+}}
+.stTabs [data-baseweb="tab"]{{
+  background:transparent !important;
+  border-radius:9px !important;
+  color:#DCEDEA !important;
+  font-weight:600;
+  padding:9px 18px;
+}}
+.stTabs [data-baseweb="tab"]:hover{{
+  background:rgba(255,255,255,.07) !important;
+  color:#FFFFFF !important;
+}}
+.stTabs [aria-selected="true"]{{
+  background:{CYAN} !important;
+  color:#FFFFFF !important;
+}}
+.stTabs [data-baseweb="tab-highlight"]{{
+  background:transparent !important;
+}}
+
+/* ── Radio / checkbox ── */
+.stRadio label, .stCheckbox label{{ color:#FFFFFF !important; }}
+.stRadio label p, .stCheckbox label p{{ color:#FFFFFF !important; }}
+.stRadio [data-baseweb="radio"]{{ color:#FFFFFF !important; }}
+
+/* ── Plain headings sitting directly on the gradient ── */
+.tl-plain-heading{{ color:#FFFFFF !important; font-weight:700; margin-bottom:2px; }}
+
+div[data-testid="stMetric"]{{
+  background:rgba(0,44,56,.72) !important;
+  border:1px solid rgba(255,255,255,.12);
+}}
+div[data-testid="stMetric"] label{{ color:#CFE3DF !important; }}
+div[data-testid="stMetric"] [data-testid="stMetricValue"]{{ color:#FFFFFF !important; }}
+div[data-testid="stMetric"] [data-testid="stMetricDelta"]{{ color:#CFE3DF !important; }}
+
+/* ── Task rows ── */
 .task-bullet{{
-  background: rgba(255,255,255,0.08);
-  border: 1px solid rgba(255,255,255,0.16);
-  border-radius: 8px;
-  padding: 8px 12px;
+  background: rgba(255,255,255,0.075);
+  border: 1px solid rgba(255,255,255,0.13);
+  border-radius: 9px;
+  padding: 9px 12px;
   margin-bottom: 6px;
-  color: #FFFFFF;
+  color: #FFFFFF !important;
   font-size: 14.5px;
 }}
+.task-bullet::first-letter{{ color:{CYAN}; }}
+
+/* Existing feedback + journal cards use dark surfaces so text remains white */
+.journal-card{{
+  background:rgba(0,44,56,.72) !important;
+  border-left:4px solid {CYAN};
+  color:#FFFFFF !important;
+  border-radius:12px;
+  padding:16px 20px;
+  margin-bottom:12px;
+  box-shadow:0 4px 14px rgba(0,0,0,.12);
+}}
+.journal-card *{{ color:#FFFFFF !important; }}
+.journal-card .jlbl{{ color:{CYAN_SOFT} !important; }}
+
+.mgr-note-existing{{
+  background:rgba(190,0,0,.16);
+  border:1px solid rgba(255,150,150,.28);
+  border-radius:10px;
+  padding:12px 14px;
+  margin-top:10px;
+  color:#FFFFFF !important;
+  font-size:14px;
+}}
+.tl-card{{
+  background:rgba(0,44,56,.72) !important;
+  color:#FFFFFF !important;
+  border:1px solid rgba(255,255,255,.13);
+}}
+.tl-card *{{ color:#FFFFFF !important; }}
 </style>
 """, unsafe_allow_html=True)
 
